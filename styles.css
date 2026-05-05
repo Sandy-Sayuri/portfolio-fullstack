@@ -1526,6 +1526,22 @@ a {
   box-shadow: inset 0 0 24px rgba(99, 169, 255, 0.06);
 }
 
+.accent-green .mission-button {
+  color: var(--neon);
+}
+
+.accent-purple .mission-button {
+  color: #cf9dff;
+}
+
+.accent-blue .mission-button {
+  color: #8dc4ff;
+}
+
+.accent-yellow .mission-button {
+  color: #ffc767;
+}
+
 .mission-top {
   display: flex;
   justify-content: space-between;
@@ -1594,27 +1610,27 @@ a {
 }
 
 .mission-tags span {
-  padding: 6px 9px;
+  padding: 5px 8px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.04);
   color: #c7d0e9;
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.6rem;
 }
 
 .mission-button {
   width: fit-content;
   margin-top: auto;
-  padding: 9px 0 0;
+  padding: 6px 0 0;
   border-radius: 0;
   border: 0;
   background: transparent;
   color: #eadcff;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .mission-button::after {
@@ -1723,6 +1739,10 @@ a {
     grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.92fr);
   }
 
+  .showcase-row {
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.22fr);
+  }
+
   .hero-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
@@ -1772,10 +1792,6 @@ a {
     min-width: 0;
   }
 
-  .terminal-layout {
-    grid-template-columns: 1fr;
-  }
-
   .scene-card {
     position: relative;
     inset: auto;
@@ -1800,10 +1816,6 @@ a {
     transform: none;
   }
 
-  .mission-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .stack-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1815,9 +1827,20 @@ a {
     grid-template-areas:
       "hero"
       "player"
-      "terminal"
-      "missions"
+      "showcase"
       "skills";
+  }
+
+  .showcase-row {
+    grid-template-columns: 1fr;
+  }
+
+  .terminal-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-layout {

@@ -1,182 +1,393 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css2?family=Cutive:wght@400;700&display=swap' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap' rel='stylesheet'>
-    <link rel="shortcut icon" href="assets/imagens/icone 1.png" type="image/x-icon">
-
-    <title>Portfolio</title>
-</head>
-<body>
-   <div class="container">
-      <nav id="header">
-        <div class="nav-logo">
-            <p class="nav-name">Sandy</p>
-            <span><img style="height: 10px;" src="assets/imagens/dragon-house (1).ico"></span>
-        </div>
-        <div class="nav-menu" id="myNavMenu">
-            <ul class="nav_menu_list">
-                <li class="nav_list">
-                    <a href="#home" class="nav-link active-link">Inicio</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#about" class="nav-link">Sobre</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#projects" class="nav-link">Projetos</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#contact" class="nav-link">Contato</a>
-                    <div class="circle"></div>
-                </li>
-            </ul>
-        </div>
-        <!-- quero colocar um modo escuro aqui  -->
-        <div class="nav-button">
-            <button class="btn" id="download-button">Baixar currículo  
-                <a id="download-link" style="display: none;" target="_blank"></a>
-                <i class="uil uil-file-alt"></i></button>
-        </div>
-        <!-- <div class="nav-button">
-            <button class="btn" id="download-button">
-                <a id="download-link" style="display: none;" target="_blank"></a>
-                <i class="uil uil-file-alt"></i></button>
-        </div> -->
-        <div class="nav-menu-btn">
-            <i class="uil uil-bars" onclick="myMenuFunction()"></i>
-        </div>
-      </nav>
-
-
-    <!-- -------------- MAIN ---------------- -->
-    <main class="wrapper">
-       <!-- -------------- FEATURED BOX ---------------- -->
-       <section class="featured-box" id="home">
-          <div class="featured-text">
-            <!-- <div class="featured-text-card">
-                <span></span>
-            </div> -->
-            <div class="featured-name">
-                <p>Eu sou <span class="typedText"></span></p>
-            </div>
-            <div class="featured-text-info">
-                <p>Sou um profissional júnior entusiasta, constantemente buscando oportunidades de aprendizado. Atualmente, atuo na área de front-end, mas meu foco principal reside no desenvolvimento robusto de soluções back-end. Complemento meu conhecimento técnico com experiência prática em bancos de dados
-                </p>
-            </div>
-            <div class="social_icons">
-                <div class="icon"><i class="uil uil-instagram"></i></div>
-                <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
-                <div class="icon"><i class="uil uil-dribbble"></i></div>
-                <div class="icon"><i class="uil uil-github-alt"></i></div>
-            </div>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sandy Sayuri | Desenvolvedora Fullstack</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Voltar ao inicio">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
           </div>
-          <div class="featured-image">
-            <div class="image">
-                <img src="assets/imagens/Perfil.png" alt="avatar">
-            </div>
-          </div>
-       </section>
-       <!-- -------------- ABOUT BOX ---------------- -->
-       <section class="section" id="about">
-          <div class="top-header">
-            <h1>Sobre</h1>
-          </div>
-          <div class="row">
-            <div class="col">
-                <div class="about-info">
-                    <h3>My introduction</h3>
-                    <p>I am well-versed in HTML, CSS and JavaScript , and other cutting edge
-                       frameworks and libraries,which allows me to implement interactive features.
-                       Additionally, I have experirence working with content management systems (CMS) like
-                       WordPress.
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="skills-box">
-                    <div class="skills-header">
-                        <h3>Frontend</h3>
-                    </div>
-                    <div class="skills-list">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Bootstrap</span>
-                        <span>JavaScript</span>
-                        <span>Vue</span>
-                        <span>React</span>
-                        <span>Angular</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <div class="skills-header">
-                        <h3>Backend</h3>
-                    </div>
-                    <div class="skills-list">
-                        <span>PHP</span>
-                        <span>JAVA</span>
-                        <span>Python</span>
-                        <span>C++</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <div class="skills-header">
-                        <h3>Database</h3>
-                    </div>
-                    <div class="skills-list">
-                        <span>MySQL</span>
-                        <span>PostgreSQL</span>
-                        <span>MongoDB</span>
-                    </div>
-                </div>
-            </div>
-          </div>
-       </section>
+          <p>SANDY.OS <span>v1.0.0</span></p>
+        </a>
 
-       <section class="section" id="about">
-        <div class="top-header">
-          <h1>Nota</h1>
+        <nav class="top-nav" aria-label="Navegacao principal">
+          <a class="top-nav-link is-active" href="#top">inicio</a>
+          <a class="top-nav-link" href="#about">sobre</a>
+          <a class="top-nav-link" href="#missions">projetos</a>
+          <a class="top-nav-link" href="#experience">experiencia</a>
+          <a class="top-nav-link" href="#contact">contato</a>
+        </nav>
+
+        <div class="topbar-right">
+          <a
+            class="resume-chip"
+            href="assets/files/Profile.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            baixar currículo
+          </a>
+          <div class="window-controls" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-        <div class="row">
-          <div class="col">
-              <div class="about-info">
-                  <h3>Sobre o site </h3>
+      </header>
 
+      <main class="workspace-grid">
+        <section class="window hero-window" id="top">
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <p class="hero-kicker">// OLÁ, EU SOU</p>
+              <h1>
+                <span>SANDY</span>
+                <span class="hero-name-alt"
+                  >SAYURI<span class="cursor">_</span></span
+                >
+              </h1>
+              <p class="hero-role">Desenvolvedora Fullstack</p>
+              <p class="hero-lead">
+                Desenvolvo sistemas que conectam backend, APIs e<br />
+                experiência do usuário.
+              </p>
+              <p class="hero-subtitle">
+                Atuo com FastAPI, NestJS, React, Angular e PostgreSQL, criando
+                soluções de ponta a ponta.
+              </p>
+
+              <div class="hero-badges">
+                <span>APIs &amp; Microserviços</span>
+                <span>Sistemas Corporativos</span>
+                <span>React + Backend</span>
               </div>
+
+              <div class="action-row">
+                <a class="button button-primary" href="#missions">
+                  <span class="button-mark">&lt;/&gt;</span>ver projetos
+                </a>
+                <a
+                  class="button button-secondary"
+                  href="assets/files/Profile.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="button-mark">[]</span>currículo
+                </a>
+                <a
+                  class="button button-link"
+                  href="https://www.linkedin.com/in/sandy-sayuri-37a69b189/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="button-mark">in</span>linkedin
+                </a>
+                <a
+                  class="button button-link"
+                  href="https://github.com/Sandy-Sayuri"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="button-mark">{ }</span>github
+                </a>
+              </div>
+            </div>
+
+            <div class="scene-card" aria-label="Ilustracao decorativa">
+              <img
+                class="scene-illustration"
+                src="assets/imagens/sayuri.png"
+                alt="Ilustracao de Sandy Sayuri com notebook"
+              />
+            </div>
           </div>
-     </section>
-       <!-- -------------- PROJECT BOX ---------------- -->
+        </section>
 
-       
+        <aside class="player-window" id="about">
+          <section class="window status-panel">
+            <div class="window-title-row">
+              <p class="window-title accent-green">// SYSTEM STATUS</p>
+            </div>
 
-    <!-- --------------- FOOTER --------------- -->
-    <footer>
+            <div class="status-block">
+              <article class="status-row">
+                <span class="status-icon status-icon-green" aria-hidden="true"
+                  >+</span
+                >
+                <div class="status-copy">
+                  <p class="status-label">status: online</p>
+                  <strong class="status-value"
+                    >Disponivel para novos desafios</strong
+                  >
+                </div>
+              </article>
 
-        <div class="bottom-footer">
-            <p>Copyright &copy;John Doe</a> - todos os direito resevados </p>
+              <article class="status-row">
+                <span class="status-icon status-icon-purple" aria-hidden="true"
+                  >@</span
+                >
+                <div class="status-copy">
+                  <p class="status-label">role</p>
+                  <strong class="status-value">Fullstack Developer</strong>
+                </div>
+              </article>
+
+              <article class="status-row">
+                <span class="status-icon status-icon-purple" aria-hidden="true"
+                  >&lt;&gt;</span
+                >
+                <div class="status-copy">
+                  <p class="status-label">focus</p>
+                  <strong class="status-value">Backend, APIs e Sistemas</strong>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section
+            class="window status-panel status-stack-panel"
+            aria-labelledby="stack-title"
+          >
+            <div class="window-title-row">
+              <p class="window-title accent-green" id="stack-title">
+                // STACK PRINCIPAL
+              </p>
+            </div>
+
+            <div class="status-stack-list">
+              <article class="status-stack-item">
+                <span class="status-icon status-icon-green" aria-hidden="true"
+                  >[]</span
+                >
+                <div class="status-copy">
+                  <p class="status-label">Backend</p>
+                  <p class="status-meta">
+                    FastAPI &middot; NestJS &middot; APIs REST
+                  </p>
+                </div>
+              </article>
+
+              <article class="status-stack-item">
+                <span class="status-icon status-icon-blue" aria-hidden="true"
+                  >/</span
+                >
+                <div class="status-copy">
+                  <p class="status-label">Frontend</p>
+                  <p class="status-meta">
+                    React &middot; Angular &middot; TypeScript
+                  </p>
+                </div>
+              </article>
+
+              <article class="status-stack-item">
+                <span class="status-icon status-icon-blue" aria-hidden="true"
+                  >db</span
+                >
+                <div class="status-copy">
+                  <p class="status-label">Banco de dados</p>
+                  <p class="status-meta">PostgreSQL</p>
+                </div>
+              </article>
+
+              <article class="status-stack-item">
+                <span class="status-icon status-icon-blue" aria-hidden="true"
+                  >#</span
+                >
+                <div class="status-copy">
+                  <p class="status-label">Arquitetura</p>
+                  <p class="status-meta">
+                    APIs REST &middot; Microsservicos &middot; RabbitMQ
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </aside>
+
+        <div class="showcase-row">
+          <section class="window terminal-window" id="experience">
+            <div class="window-title-row">
+              <p class="window-title accent-green">// TERMINAL INTERATIVO</p>
+              <div class="terminal-lights" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <div class="terminal-layout">
+              <div class="terminal-copy">
+                <p class="prompt">sandy.dev@portfolio:~$ help</p>
+                <p class="terminal-intro">Comandos disponiveis:</p>
+
+                <div class="command-list">
+                  <p><strong>about</strong><span>- quem sou eu</span></p>
+                  <p><strong>skills</strong><span>- minhas habilidades</span></p>
+                  <p><strong>projects</strong><span>- meus projetos</span></p>
+                  <p><strong>experience</strong><span>- minha jornada</span></p>
+                  <p><strong>contact</strong><span>- vamos conversar</span></p>
+                  <p>
+                    <strong>orbitlab</strong><span>- simulador de fisica</span>
+                  </p>
+                </div>
+
+                <p class="prompt prompt-last">
+                  sandy.dev@portfolio:~$ <span class="terminal-caret"></span>
+                </p>
+              </div>
+
+              <aside class="tip-card">
+                <span class="tip-badge">DICA</span>
+                <p>
+                  Digite "projects" para ver meus projetos ou "orbitlab" para
+                  conhecer meu projeto tecnico principal.
+                </p>
+                <div class="tip-pet" aria-hidden="true">^._.^</div>
+              </aside>
+            </div>
+
+            <p class="terminal-footer">
+              &gt; digite "projects" para ver meus projetos ou "orbitlab" para
+              conhecer meu projeto tecnico principal
+            </p>
+          </section>
+
+          <section class="window missions-window" id="missions">
+            <div class="window-title-row">
+              <p class="window-title accent-green">
+                // MISSOES - PROJETOS EM DESTAQUE
+              </p>
+              <a
+                class="window-link"
+                href="https://github.com/Sandy-Sayuri?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ver todos -&gt;
+              </a>
+            </div>
+
+            <div class="mission-grid">
+              <article class="mission-card accent-green">
+                <div class="mission-top">
+                  <span class="mission-icon">01</span>
+                  <span class="mission-menu">ONLINE</span>
+                </div>
+                <h3>Microsservico com PostgreSQL</h3>
+                <p>
+                  Servico backend para gerenciamento de dados e integracoes, com
+                  APIs REST e persistencia em PostgreSQL.
+                </p>
+                <div class="mission-tags">
+                  <span>Backend</span>
+                  <span>PostgreSQL</span>
+                  <span>API</span>
+                </div>
+                <span class="mission-button">ver missao</span>
+              </article>
+
+              <article class="mission-card accent-purple">
+                <div class="mission-top">
+                  <span class="mission-icon">02</span>
+                  <span class="mission-menu">ONLINE</span>
+                </div>
+                <h3>Vitrine de Talentos</h3>
+                <p>
+                  Sistema corporativo para exibicao e gerenciamento de talentos,
+                  com foco em processos internos de relacao e gestao de
+                  colaboradores.
+                </p>
+                <div class="mission-tags">
+                  <span>Angular</span>
+                  <span>NestJS</span>
+                  <span>MySQL</span>
+                </div>
+                <span class="mission-button">ver missao</span>
+              </article>
+
+              <article class="mission-card accent-blue">
+                <div class="mission-top">
+                  <span class="mission-icon">03</span>
+                  <span class="mission-menu">ONLINE</span>
+                </div>
+                <h3>OrbitLab</h3>
+                <p>
+                  Simulador visual de fisica classica no navegador, que
+                  transforma formulas matematicas em simulacoes interativas em
+                  tempo real com React, MathJS e Canvas.
+                </p>
+                <div class="mission-tags">
+                  <span>React</span>
+                  <span>TypeScript</span>
+                  <span>MathJS</span>
+                  <span>NestJS</span>
+                </div>
+                <span class="mission-button">ver missao</span>
+              </article>
+
+              <article class="mission-card accent-yellow">
+                <div class="mission-top">
+                  <span class="mission-icon">04</span>
+                  <span class="mission-menu">ONLINE</span>
+                </div>
+                <h3>Sistema de Memorias</h3>
+                <p>
+                  Aplicacao pessoal interativa para organizacao de memorias,
+                  eventos e mapas, com autenticacao e persistencia de dados.
+                </p>
+                <div class="mission-tags">
+                  <span>React</span>
+                  <span>TypeScript</span>
+                </div>
+                <span class="mission-button">ver missao</span>
+              </article>
+            </div>
+          </section>
         </div>
-    </footer>
 
+        <section class="window skills-window" id="skills">
+          <div class="window-title-row">
+            <p class="window-title accent-green">// STACK PRINCIPAL</p>
+          </div>
+
+          <div class="stack-grid">
+            <article class="stack-card">
+              <p class="stack-label">Backend</p>
+              <strong>FastAPI &middot; NestJS &middot; Node.js</strong>
+            </article>
+
+            <article class="stack-card">
+              <p class="stack-label">Frontend</p>
+              <strong>React &middot; Angular &middot; TypeScript</strong>
+            </article>
+
+            <article class="stack-card">
+              <p class="stack-label">Banco de dados</p>
+              <strong>PostgreSQL &middot; MySQL</strong>
+            </article>
+
+            <article class="stack-card">
+              <p class="stack-label">Arquitetura</p>
+              <strong
+                >APIs REST &middot; Microsservicos &middot; RabbitMQ</strong
+              >
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="system-footer" id="contact">
+        <p><strong>STATUS DO SISTEMA:</strong> ONLINE</p>
+        <p><strong>Ultimo commit:</strong> construindo minha melhor versao</p>
+        <p>&copy; 2026 Sandy Sayuri</p>
+      </footer>
     </div>
-
-
-
-
-    <!-- ----- TYPING JS Link ----- -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-       <!-- ----- SCROLL REVEAL JS Link----- -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!-- ----- MAIN JS ----- -->
-    <script src="main.js"></script>
-</body>
+  </body>
 </html>

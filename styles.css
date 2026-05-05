@@ -1537,14 +1537,14 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 42px;
-  height: 42px;
-  padding-inline: 10px;
-  border-radius: 10px;
+  min-width: 34px;
+  height: 34px;
+  padding-inline: 8px;
+  border-radius: 9px;
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
   font-family: var(--mono);
-  font-size: 0.76rem;
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
 }
 
@@ -1571,30 +1571,26 @@ a {
 .mission-menu {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-}
-
-.mission-featured .mission-menu {
-  padding-right: 104px;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
 }
 
 .mission-card h3 {
   color: #f5f7ff;
-  font-size: 0.98rem;
+  font-size: 0.88rem;
   line-height: 1.35;
 }
 
 .mission-card p {
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   line-height: 1.6;
 }
 
 .mission-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .mission-tags span {

@@ -17,14 +17,6 @@
           <p>SANDY.OS <span>v1.0.0</span></p>
         </a>
 
-        <nav class="top-nav" aria-label="Navegacao principal">
-          <a class="top-nav-link is-active" href="#top">inicio</a>
-          <a class="top-nav-link" href="#about">sobre</a>
-          <a class="top-nav-link" href="#missions">projetos</a>
-          <a class="top-nav-link" href="#experience">experiencia</a>
-          <a class="top-nav-link" href="#contact">contato</a>
-        </nav>
-
         <div class="topbar-right">
           <a
             class="resume-chip"
@@ -222,8 +214,8 @@
               </div>
             </div>
 
-            <div class="terminal-layout">
-              <div class="terminal-copy">
+            <div class="terminal-body">
+              <div class="terminal-static">
                 <p class="prompt">sandy.dev@portfolio:~$ help</p>
                 <p class="terminal-intro">Comandos disponiveis:</p>
 
@@ -238,27 +230,36 @@
                   <p>
                     <strong>orbitlab</strong><span>- simulador de fisica</span>
                   </p>
+                  <p><strong>clear</strong><span>- limpar respostas</span></p>
                 </div>
-
-                <p class="prompt prompt-last">
-                  sandy.dev@portfolio:~$ <span class="terminal-caret"></span>
-                </p>
               </div>
 
-              <aside class="tip-card">
-                <span class="tip-badge">DICA</span>
-                <p>
-                  Digite "projects" para ver meus projetos ou "orbitlab" para
-                  conhecer meu projeto tecnico principal.
-                </p>
-                <div class="tip-pet" aria-hidden="true">^._.^</div>
-              </aside>
+              <div
+                id="terminal-log"
+                class="terminal-log"
+                aria-live="polite"
+                aria-label="Historico do terminal"
+              ></div>
             </div>
 
-            <p class="terminal-footer">
-              &gt; digite "projects" para ver meus projetos ou "orbitlab" para
-              conhecer meu projeto tecnico principal
-            </p>
+            <div class="terminal-footer-bar">
+              <form id="terminal-form" class="terminal-form" autocomplete="off">
+                <label class="terminal-prompt-row">
+                  <span class="prompt terminal-prompt-prefix"
+                    >sandy.dev@portfolio:~$</span
+                  >
+                  <input
+                    id="terminal-input"
+                    class="terminal-input"
+                    type="text"
+                    spellcheck="false"
+                    autocomplete="off"
+                    aria-label="Digite um comando"
+                    placeholder="digite um comando..."
+                  />
+                </label>
+              </form>
+            </div>
           </section>
 
           <section class="window missions-window" id="missions">

@@ -174,50 +174,6 @@ a {
   gap: 16px;
 }
 
-.top-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 26px;
-}
-
-.top-nav-link {
-  position: relative;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: lowercase;
-  transition: color 0.2s ease;
-}
-
-.top-nav-link::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -10px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: transparent;
-  transform: translateX(-50%);
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.top-nav-link:hover,
-.top-nav-link.is-active {
-  color: #f2f5ff;
-}
-
-.top-nav-link:hover::after,
-.top-nav-link.is-active::after {
-  background: var(--neon);
-  box-shadow: 0 0 14px rgba(63, 240, 141, 0.42);
-}
-
 .resume-chip {
   display: inline-flex;
   align-items: center;
@@ -280,7 +236,7 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.48fr);
   gap: 14px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .window {
@@ -1305,7 +1261,12 @@ a {
 }
 
 .terminal-window {
-  min-height: 272px;
+  height: 520px;
+  max-height: 520px;
+  min-height: 520px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 0;
   border-color: rgba(63, 240, 141, 0.22);
   background:
@@ -1340,18 +1301,21 @@ a {
   background: #28c840;
 }
 
-.terminal-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(210px, 0.68fr);
-  gap: 20px;
-  padding: 20px;
-  align-items: stretch;
-  min-height: 194px;
+.terminal-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 20px 0;
+  overflow: hidden;
 }
 
-.terminal-copy {
-  font-family: var(--mono);
-  padding: 2px 2px 2px 0;
+.terminal-footer-bar {
+  flex-shrink: 0;
+  padding: 10px 20px 14px;
+  border-top: 1px solid rgba(63, 240, 141, 0.12);
+  background: rgba(0, 0, 0, 0.18);
 }
 
 .prompt {
@@ -1392,14 +1356,217 @@ a {
   margin-top: 20px;
 }
 
-.terminal-caret {
+/* ── TERMINAL INTERATIVO ─────────────────────────────────────── */
+
+.terminal-body,
+.terminal-footer-bar {
+  font-family: var(--mono);
+}
+
+/* Parte estática — sempre visível, nunca rola */
+.terminal-static {
+  flex-shrink: 0;
+}
+
+.terminal-log {
+  flex: 1;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(63, 240, 141, 0.25) transparent;
+}
+
+.terminal-log::-webkit-scrollbar {
+  width: 3px;
+}
+
+.terminal-log::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-log::-webkit-scrollbar-thumb {
+  background: rgba(63, 240, 141, 0.25);
+  border-radius: 999px;
+}
+
+.terminal-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.terminal-entry-prompt {
+  color: var(--neon);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.terminal-entry-output {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 16px;
+}
+
+.terminal-entry-line {
+  color: #c8d8f0;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.terminal-entry-command {
+  display: grid;
+  grid-template-columns: minmax(86px, 122px) 1fr;
+  gap: 14px;
+  font-size: 0.84rem;
+}
+
+.terminal-entry-command strong {
+  color: var(--neon);
+  font-weight: 700;
+}
+
+.terminal-entry-command span {
+  color: var(--muted);
+}
+
+.terminal-entry-line-links {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.terminal-entry-line-links strong {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.terminal-entry-link {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.84rem;
+}
+
+.terminal-entry-link:hover {
+  color: #aed5ff;
+}
+
+/* ── TERMINAL HEADER BADGE ──────────────────────────────────── */
+
+.terminal-entry-header {
   display: inline-block;
-  width: 10px;
-  height: 18px;
-  vertical-align: middle;
-  background: var(--neon);
-  box-shadow: 0 0 12px rgba(63, 240, 141, 0.36);
-  animation: blink 1s steps(1) infinite;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 1px 8px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  border: 1px solid currentColor;
+  opacity: 0.8;
+}
+
+/* Accent por comando */
+.terminal-entry--about .terminal-entry-header {
+  color: var(--blue);
+}
+.terminal-entry--about .terminal-entry-line {
+  color: #a8c8ee;
+}
+
+.terminal-entry--skills .terminal-entry-header {
+  color: var(--neon);
+}
+.terminal-entry--skills .terminal-entry-line {
+  color: #9ddfc0;
+}
+
+.terminal-entry--experience .terminal-entry-header {
+  color: var(--purple);
+}
+.terminal-entry--experience .terminal-entry-line {
+  color: #c8b0f6;
+}
+
+.terminal-entry--orbitlab .terminal-entry-header {
+  color: #3fe0f0;
+}
+.terminal-entry--orbitlab .terminal-entry-line {
+  color: #8adde8;
+}
+
+.terminal-entry--contact .terminal-entry-header {
+  color: var(--yellow);
+}
+
+.terminal-entry--projects .terminal-entry-header {
+  color: var(--muted);
+}
+.terminal-entry--help .terminal-entry-header {
+  color: var(--muted);
+}
+
+.terminal-entry--error .terminal-entry-header {
+  color: #ff6b6b;
+}
+.terminal-entry--error .terminal-entry-line {
+  color: #ffaaaa;
+}
+
+/* Animacao de entrada linha por linha */
+@keyframes terminal-line-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.terminal-entry-line.is-animating {
+  opacity: 0;
+  animation: terminal-line-in 0.18s ease forwards;
+}
+
+.terminal-form {
+  margin: 0;
+}
+
+.terminal-prompt-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: text;
+}
+
+.terminal-prompt-prefix {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.terminal-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--neon);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  caret-color: var(--neon);
+}
+
+.terminal-input::placeholder {
+  color: rgba(63, 240, 141, 0.3);
+  font-weight: 400;
 }
 
 .tip-card {
@@ -1455,6 +1622,10 @@ a {
 }
 
 .missions-window {
+  height: 520px;
+  max-height: 520px;
+  min-height: 520px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   padding-bottom: 0;
@@ -1474,6 +1645,37 @@ a {
   gap: 10px;
   padding: 12px;
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.mission-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glow temporário disparado pelo comando "projects" no terminal */
+@keyframes terminal-section-flash {
+  0% {
+    box-shadow: 0 0 0 2px rgba(99, 169, 255, 0);
+  }
+  25% {
+    box-shadow:
+      0 0 0 2px rgba(99, 169, 255, 0.6),
+      0 0 28px rgba(99, 169, 255, 0.18);
+  }
+  75% {
+    box-shadow:
+      0 0 0 2px rgba(99, 169, 255, 0.4),
+      0 0 20px rgba(99, 169, 255, 0.12);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(99, 169, 255, 0);
+  }
+}
+
+.missions-window.is-terminal-highlight {
+  animation: terminal-section-flash 1.8s ease forwards;
 }
 
 .mission-card {
@@ -1902,8 +2104,12 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .terminal-layout {
-    grid-template-columns: 1fr;
+  .terminal-body {
+    padding: 14px 14px 0;
+  }
+
+  .terminal-footer-bar {
+    padding: 10px 14px 12px;
   }
 
   .mission-grid {
@@ -1940,21 +2146,11 @@ a {
   }
 
   .topbar {
-    flex-wrap: wrap;
     align-items: center;
-  }
-
-  .top-nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: 18px;
-    padding-top: 4px;
   }
 
   .topbar-right {
     margin-left: auto;
-    width: auto;
     flex-direction: row;
     align-items: center;
     gap: 12px;
@@ -2030,7 +2226,6 @@ a {
   }
 
   .hero-layout,
-  .terminal-layout,
   .mission-grid,
   .stack-grid {
     padding: 14px;
@@ -2363,19 +2558,8 @@ body.modal-open {
 }
 
 @media (max-width: 460px) {
-  .topbar {
-    align-items: flex-start;
-  }
-
-  .top-nav {
-    justify-content: flex-start;
-    gap: 14px 18px;
-  }
-
   .topbar-right {
-    width: 100%;
-    margin-left: 0;
-    justify-content: space-between;
+    margin-left: auto;
   }
 
   .hero-badges,

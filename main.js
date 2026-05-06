@@ -478,13 +478,15 @@ document.addEventListener("DOMContentLoaded", () => {
     terminalLog.scrollTop = terminalLog.scrollHeight;
   }
 
-  function appendTerminalEntry(command, renderOutput) {
+  function appendTerminalEntry(command, renderOutput, options = {}) {
     if (!terminalLog) {
       return;
     }
 
     const entry = document.createElement("article");
-    entry.className = "terminal-entry";
+    entry.className =
+      "terminal-entry" +
+      (options.accent ? ` terminal-entry--${options.accent}` : "");
 
     const promptLine = document.createElement("p");
     promptLine.className = "prompt terminal-entry-prompt";
@@ -492,6 +494,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const output = document.createElement("div");
     output.className = "terminal-entry-output";
+
+    if (options.header) {
+      const badge = document.createElement("span");
+      badge.className = "terminal-entry-header";
+      badge.textContent = options.header;
+      output.append(badge);
+    }
+
     renderOutput(output);
 
     entry.append(promptLine, output);
@@ -499,15 +509,27 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTerminalToBottom();
   }
 
-  function appendTerminalLines(command, lines) {
-    appendTerminalEntry(command, (output) => {
-      lines.forEach((line) => {
-        const row = document.createElement("p");
-        row.className = "terminal-entry-line";
-        row.textContent = line;
-        output.append(row);
-      });
-    });
+  function appendTerminalLines(command, lines, options = {}) {
+    appendTerminalEntry(
+      command,
+      (output) => {
+        lines.forEach((line, i) => {
+          const row = document.createElement("p");
+          row.className = "terminal-entry-line";
+          row.textContent = line;
+          if (!prefersReducedMotion) {
+            row.style.animationDelay = `${i * 32}ms`;
+            row.classList.add("is-animating");
+          }
+          output.append(row);
+        });
+      },
+      options,
+    );
+
+    if (!prefersReducedMotion && lines.length > 1) {
+      setTimeout(scrollTerminalToBottom, lines.length * 32 + 120);
+    }
   }
 
   function createTerminalLink(label, href, text, isExternal) {
@@ -556,53 +578,102 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleProjectsCommand() {
-    const projectsSection = document.getElementById("projects");
+    const projectsSection = document.getElementById("missions");
 
-    appendTerminalLines("projects", ["Rolando para a secao de projetos..."]);
+    appendTerminalLines(
+      "projects",
+      [
+        "scanning project index...",
+        "",
+        "4 missoes encontradas.",
+        "",
+        "  \u2713  [01]  OrbitLab          ............  EM EVOLUCAO",
+        "  \u2713  [02]  Vitrine de Talentos .........  CORPORATIVO",
+        "  \u2713  [03]  Admissao Digital  ...........  CORPORATIVO",
+        "  \u2713  [04]  AtomKit UI        ...........  EM PROGRESSO",
+        "",
+        "destacando projetos...",
+      ],
+      { header: "[ PROJECT INDEX ]", accent: "projects" },
+    );
 
-    if (!projectsSection) {
-      return;
-    }
+    if (!projectsSection) return;
 
-    scrollToTarget(projectsSection);
-    window.history.replaceState(null, "", "#projects");
+    setTimeout(() => {
+      scrollToTarget(projectsSection);
+      window.history.replaceState(null, "", "#missions");
+      projectsSection.classList.add("is-terminal-highlight");
+      setTimeout(
+        () => projectsSection.classList.remove("is-terminal-highlight"),
+        1800,
+      );
+    }, 420);
   }
 
   function handleContactCommand() {
-    appendTerminalEntry("contact", (output) => {
-      output.append(
-        createTerminalLink(
-          "LinkedIn",
-          "https://www.linkedin.com/in/sandy-sayuri-37a69b189/",
-          "https://www.linkedin.com/in/sandy-sayuri-37a69b189/",
-          true,
-        ),
-      );
-      output.append(
-        createTerminalLink(
-          "GitHub",
-          "https://github.com/Sandy-Sayuri",
-          "https://github.com/Sandy-Sayuri",
-          true,
-        ),
-      );
-      output.append(
-        createTerminalLink(
-          "E-mail",
-          "mailto:sandysayuri120@gmail.com",
-          "sandysayuri120@gmail.com",
-          false,
-        ),
-      );
-    });
+    appendTerminalEntry(
+      "contact",
+      (output) => {
+        const lines = [
+          "initiating contact protocol...",
+          "",
+          "canais disponiveis:",
+        ];
+        lines.forEach((text, i) => {
+          const p = document.createElement("p");
+          p.className = "terminal-entry-line";
+          p.textContent = text;
+          if (!prefersReducedMotion) {
+            p.style.animationDelay = `${i * 32}ms`;
+            p.classList.add("is-animating");
+          }
+          output.append(p);
+        });
+        output.append(
+          createTerminalLink(
+            "  LinkedIn",
+            "https://www.linkedin.com/in/sandy-sayuri-37a69b189/",
+            "linkedin.com/in/sandy-sayuri",
+            true,
+          ),
+        );
+        output.append(
+          createTerminalLink(
+            "  GitHub  ",
+            "https://github.com/Sandy-Sayuri",
+            "github.com/Sandy-Sayuri",
+            true,
+          ),
+        );
+        output.append(
+          createTerminalLink(
+            "  E-mail  ",
+            "mailto:sandysayuri120@gmail.com",
+            "sandysayuri120@gmail.com",
+            false,
+          ),
+        );
+      },
+      { header: "[ CONTACT PROTOCOL ]", accent: "contact" },
+    );
   }
 
   function handleOrbitLabCommand() {
-    appendTerminalLines("orbitlab", [
-      "Abrindo detalhes do projeto OrbitLab...",
-    ]);
+    appendTerminalLines(
+      "orbitlab",
+      [
+        "loading mission file: ORBITLAB...",
+        "",
+        "  status  \u2192  EM EVOLUCAO",
+        "  tipo    \u2192  projeto pessoal",
+        "  stack   \u2192  Angular  TypeScript  Canvas  MathJS  NestJS",
+        "",
+        "abrindo ficha tecnica...",
+      ],
+      { header: "[ MISSION FILE ]", accent: "orbitlab" },
+    );
 
-    openProjectModal("orbitlab", terminalInput);
+    setTimeout(() => openProjectModal("orbitlab", terminalInput), 480);
   }
 
   function executeTerminalCommand(rawCommand) {
@@ -614,25 +685,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
     switch (normalizedCommand) {
       case "about":
-        appendTerminalLines("about", [
-          "Desenvolvedora Fullstack com foco em backend, APIs e sistemas corporativos.",
-        ]);
+        appendTerminalLines(
+          "about",
+          [
+            "loading operator profile...",
+            "",
+            "  Sandy Sayuri",
+            "  Desenvolvedora Fullstack",
+            "",
+            "  foco    \u2192  backend  APIs  sistemas corporativos",
+            "  stack   \u2192  FastAPI  NestJS  React  Angular  PostgreSQL",
+            "",
+            "  Experiencia em aplicacoes internas, microsservicos,",
+            "  autenticacao corporativa e integracoes assincronas.",
+            "",
+            "  Tambem desenvolvo projetos pessoais com foco em",
+            "  simulacao, interfaces interativas e frontend-first.",
+          ],
+          { header: "[ OPERATOR PROFILE ]", accent: "about" },
+        );
         break;
       case "skills":
-        appendTerminalLines("skills", [
-          "Backend: FastAPI, NestJS, Node.js",
-          "Frontend: React, Angular, TypeScript",
-          "Banco de dados: PostgreSQL, MySQL",
-          "Arquitetura: APIs REST, Microsservicos, RabbitMQ",
-        ]);
+        appendTerminalLines(
+          "skills",
+          [
+            "running skill scanner...",
+            "",
+            "  BACKEND      FastAPI · NestJS · Node.js · Python",
+            "  FRONTEND     React · Angular · TypeScript · HTML/CSS",
+            "  DATABASE     PostgreSQL · MySQL · SQLAlchemy",
+            "  ARCH         APIs REST · RabbitMQ · Microsservicos · i18n",
+            "  TOOLS        Git · Docker · Storybook · Vite",
+            "",
+            "  scan completo.",
+          ],
+          { header: "[ SKILL SCANNER ]", accent: "skills" },
+        );
         break;
       case "projects":
         handleProjectsCommand();
         break;
       case "experience":
-        appendTerminalLines("experience", [
-          "Experiencia em sistemas corporativos, admissao digital, vitrine de talentos, microsservicos, autenticacao, dashboards e integracoes.",
-        ]);
+        appendTerminalLines(
+          "experience",
+          [
+            "[ 2023 - Atual ]  Stefanini — Desenvolvedora Fullstack Jr",
+            "",
+            "Projetos:",
+            "  · Vitrine de Talentos",
+            "  · Admissao Digital",
+            "",
+            "Atuacao:",
+            "  · Backend com FastAPI e NestJS",
+            "  · APIs REST corporativas",
+            "  · PostgreSQL e MySQL",
+            "  · RabbitMQ e microsservicos",
+            "  · Traducao / i18n de sistemas",
+            "  · Login corporativo",
+          ],
+          { header: "[ EXPERIENCE ]", accent: "experience" },
+        );
         break;
       case "contact":
         handleContactCommand();
@@ -644,12 +756,20 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTerminalLog();
         break;
       case "help":
-        appendTerminalEntry("help", renderHelp);
+        appendTerminalEntry("help", renderHelp, {
+          header: "[ HELP ]",
+          accent: "help",
+        });
         break;
       default:
-        appendTerminalLines(normalizedCommand, [
-          "Comando nao encontrado. Digite 'help' para ver as opcoes.",
-        ]);
+        appendTerminalLines(
+          normalizedCommand,
+          [
+            `comando '${normalizedCommand}' nao reconhecido.`,
+            "execute 'help' para listar os comandos disponiveis.",
+          ],
+          { header: "[ COMMAND NOT FOUND ]", accent: "error" },
+        );
         break;
     }
   }
@@ -695,6 +815,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (target.closest("[data-modal-close]")) {
       closeProjectModal();
+    }
+  });
+
+  terminalInput?.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+
+    event.preventDefault();
+
+    if (!(terminalInput instanceof HTMLInputElement)) return;
+
+    const typed = terminalInput.value.trim().toLowerCase();
+    if (!typed) return;
+
+    const matches = terminalCommands
+      .map((c) => c.name)
+      .filter((name) => name.startsWith(typed));
+
+    if (matches.length === 1) {
+      terminalInput.value = matches[0];
+    } else if (matches.length > 1) {
+      // preenche até o prefixo comum
+      let common = matches[0];
+      for (const m of matches) {
+        while (!m.startsWith(common)) {
+          common = common.slice(0, -1);
+        }
+      }
+      terminalInput.value = common;
     }
   });
 

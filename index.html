@@ -229,7 +229,9 @@
 
                 <div class="command-list">
                   <p><strong>about</strong><span>- quem sou eu</span></p>
-                  <p><strong>skills</strong><span>- minhas habilidades</span></p>
+                  <p>
+                    <strong>skills</strong><span>- minhas habilidades</span>
+                  </p>
                   <p><strong>projects</strong><span>- meus projetos</span></p>
                   <p><strong>experience</strong><span>- minha jornada</span></p>
                   <p><strong>contact</strong><span>- vamos conversar</span></p>
@@ -275,112 +277,142 @@
             </div>
 
             <div class="mission-grid">
-              <article class="mission-card accent-green">
+              <article class="mission-card mission-card-featured accent-blue">
                 <div class="mission-top">
-                  <span class="mission-icon">01</span>
-                  <span class="mission-menu">ONLINE</span>
+                  <div class="mission-top-start">
+                    <span class="mission-icon">01</span>
+                  </div>
+                  <span class="mission-menu">EM EVOLUÇÃO</span>
                 </div>
-                <h3>Microsservico com PostgreSQL</h3>
-                <p>
-                  Servico backend para gerenciamento de dados e integracoes, com
-                  APIs REST e persistencia em PostgreSQL.
-                </p>
-                <div class="mission-tags">
-                  <span>Backend</span>
-                  <span>PostgreSQL</span>
-                  <span>API</span>
+                <div class="mission-featured-body">
+                  <div class="mission-featured-desc">
+                    <h3>OrbitLab</h3>
+                    <p>
+                      Simulador visual de física clássica no navegador, que
+                      transforma fórmulas matemáticas em simulações interativas
+                      em tempo real com React, MathJS e Canvas.
+                    </p>
+                    <div class="mission-highlights">
+                      <span>parser matemático</span>
+                      <span>simulação em tempo real</span>
+                      <span>renderização em Canvas</span>
+                    </div>
+                  </div>
+                  <div class="mission-featured-aside">
+                    <div class="mission-tags">
+                      <span>React</span>
+                      <span>TypeScript</span>
+                      <span>MathJS</span>
+                      <span>NestJS</span>
+                      <span>Canvas API</span>
+                    </div>
+                    <button
+                      class="mission-button"
+                      type="button"
+                      data-project="orbitlab"
+                    >
+                      ver missao
+                    </button>
+                  </div>
                 </div>
-                <span class="mission-button">ver missao</span>
               </article>
 
               <article class="mission-card accent-purple">
                 <div class="mission-top">
                   <span class="mission-icon">02</span>
-                  <span class="mission-menu">ONLINE</span>
+                  <span class="mission-menu">CORPORATIVO</span>
                 </div>
                 <h3>Vitrine de Talentos</h3>
                 <p>
-                  Sistema corporativo para exibicao e gerenciamento de talentos,
-                  com foco em processos internos de relacao e gestao de
-                  colaboradores.
+                  Sistema corporativo de realocação de colaboradores, com
+                  suporte a tradução, login corporativo e integrações
+                  assíncronas.
                 </p>
                 <div class="mission-tags">
                   <span>Angular</span>
                   <span>NestJS</span>
                   <span>MySQL</span>
+                  <span>RabbitMQ</span>
+                  <span>i18n</span>
                 </div>
-                <span class="mission-button">ver missao</span>
+                <div class="mission-highlights">
+                  <span>suporte multilíngue</span>
+                  <span>login corporativo</span>
+                  <span>RabbitMQ</span>
+                </div>
+                <button
+                  class="mission-button"
+                  type="button"
+                  data-project="vitrine-de-talentos"
+                >
+                  ver missao
+                </button>
               </article>
 
-              <article class="mission-card accent-blue">
+              <article class="mission-card accent-green">
                 <div class="mission-top">
                   <span class="mission-icon">03</span>
-                  <span class="mission-menu">ONLINE</span>
+                  <span class="mission-menu">CORPORATIVO</span>
                 </div>
-                <h3>OrbitLab</h3>
+                <h3>Admissão Digital</h3>
                 <p>
-                  Simulador visual de fisica classica no navegador, que
-                  transforma formulas matematicas em simulacoes interativas em
-                  tempo real com React, MathJS e Canvas.
+                  Backend corporativo para pré-admissão e onboarding, com APIs,
+                  autenticação, permissões e gestão documental.
                 </p>
                 <div class="mission-tags">
-                  <span>React</span>
-                  <span>TypeScript</span>
-                  <span>MathJS</span>
-                  <span>NestJS</span>
+                  <span>FastAPI</span>
+                  <span>PostgreSQL</span>
+                  <span>SQLAlchemy</span>
+                  <span>APIs REST</span>
                 </div>
-                <span class="mission-button">ver missao</span>
+                <div class="mission-highlights">
+                  <span>autenticação</span>
+                  <span>permissões</span>
+                  <span>APIs corporativas</span>
+                </div>
+                <button
+                  class="mission-button"
+                  type="button"
+                  data-project="admissao-digital"
+                >
+                  ver missao
+                </button>
               </article>
 
-              <article class="mission-card accent-yellow">
+              <article class="mission-card mission-card-wide accent-yellow">
                 <div class="mission-top">
                   <span class="mission-icon">04</span>
-                  <span class="mission-menu">ONLINE</span>
+                  <span class="mission-menu">EM PROGRESSO</span>
                 </div>
-                <h3>Sistema de Memorias</h3>
+                <h3>AtomKit UI</h3>
                 <p>
-                  Aplicacao pessoal interativa para organizacao de memorias,
-                  eventos e mapas, com autenticacao e persistencia de dados.
+                  Biblioteca de componentes reutilizáveis baseada em Atomic
+                  Design, criada para padronizar interfaces e acelerar o
+                  desenvolvimento de aplicações web.
                 </p>
                 <div class="mission-tags">
                   <span>React</span>
                   <span>TypeScript</span>
+                  <span>Storybook</span>
+                  <span>Atomic Design</span>
+                  <span>NPM</span>
                 </div>
-                <span class="mission-button">ver missao</span>
+                <div class="mission-highlights">
+                  <span>Atomic Design</span>
+                  <span>Storybook</span>
+                  <span>publicação npm</span>
+                </div>
+                <button
+                  class="mission-button"
+                  type="button"
+                  data-project="atomkit-ui"
+                >
+                  ver missao
+                </button>
               </article>
             </div>
           </section>
         </div>
-
-        <section class="window skills-window" id="skills">
-          <div class="window-title-row">
-            <p class="window-title accent-green">// STACK PRINCIPAL</p>
-          </div>
-
-          <div class="stack-grid">
-            <article class="stack-card">
-              <p class="stack-label">Backend</p>
-              <strong>FastAPI &middot; NestJS &middot; Node.js</strong>
-            </article>
-
-            <article class="stack-card">
-              <p class="stack-label">Frontend</p>
-              <strong>React &middot; Angular &middot; TypeScript</strong>
-            </article>
-
-            <article class="stack-card">
-              <p class="stack-label">Banco de dados</p>
-              <strong>PostgreSQL &middot; MySQL</strong>
-            </article>
-
-            <article class="stack-card">
-              <p class="stack-label">Arquitetura</p>
-              <strong
-                >APIs REST &middot; Microsservicos &middot; RabbitMQ</strong
-              >
-            </article>
-          </div>
-        </section>
       </main>
 
       <footer class="system-footer" id="contact">
@@ -389,5 +421,25 @@
         <p>&copy; 2026 Sandy Sayuri</p>
       </footer>
     </div>
+    <div id="project-modal" class="project-modal" hidden>
+      <div class="project-modal-backdrop" data-modal-close></div>
+      <div class="project-modal-panel">
+        <button
+          type="button"
+          class="project-modal-close"
+          data-modal-close
+          aria-label="Fechar"
+        >
+          ✕
+        </button>
+        <header class="project-modal-header">
+          <h2 id="project-modal-title" class="project-modal-title"></h2>
+          <p id="project-modal-subtitle" class="project-modal-subtitle"></p>
+        </header>
+        <div id="project-modal-sections" class="project-modal-sections"></div>
+        <div id="project-modal-links" class="project-modal-links" hidden></div>
+      </div>
+    </div>
+    <script src="main.js"></script>
   </body>
 </html>

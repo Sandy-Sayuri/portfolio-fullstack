@@ -676,10 +676,74 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => openProjectModal("orbitlab", terminalInput), 480);
   }
 
+  function handleHiddenTerminalCommand(command) {
+    if (command === "ls" || command === "dir") {
+      appendTerminalLines(
+        command,
+        [
+          "ei!!! isso nao estava na lista de comandos...",
+          "mas essa foi boa.",
+          "",
+          "pastas encontradas:",
+          "  ./sobre",
+          "  ./skills",
+          "  ./projetos",
+          "  ./experiencia",
+          "  ./contato",
+          "",
+          "dica: tenta 'cd projetos' ou 'cd experiencia'.",
+        ],
+        { header: "[ SECRET COMMAND ]", accent: "help" },
+      );
+      return true;
+    }
+
+    if (command === "cd" || command.startsWith("cd ")) {
+      const target = command.replace(/^cd\s*/, "").trim() || "~";
+
+      appendTerminalLines(
+        command,
+        [
+          "ei!!! isso nao estava na lista de comandos...",
+          "mas gostei da iniciativa.",
+          "",
+          `entrando em: ${target}`,
+          "acesso simbolico concedido.",
+          "",
+          "atalhos uteis:",
+          "  cd projetos     -> destaca os projetos",
+          "  cd experiencia  -> mostra minha jornada",
+          "  cd contato      -> abre canais de contato",
+        ],
+        { header: "[ NAVIGATION HACK ]", accent: "help" },
+      );
+
+      if (target === "projetos" || target === "projects") {
+        setTimeout(() => executeTerminalCommand("projects"), 420);
+      }
+
+      if (target === "experiencia" || target === "experience") {
+        setTimeout(() => executeTerminalCommand("experience"), 420);
+      }
+
+      if (target === "contato" || target === "contact") {
+        setTimeout(() => executeTerminalCommand("contact"), 420);
+      }
+
+      return true;
+    }
+
+    return false;
+  }
+
   function executeTerminalCommand(rawCommand) {
     const normalizedCommand = rawCommand.trim().toLowerCase();
 
     if (!normalizedCommand) {
+      return;
+    }
+
+    if (handleHiddenTerminalCommand(normalizedCommand)) {
       return;
     }
 
@@ -729,19 +793,22 @@ document.addEventListener("DOMContentLoaded", () => {
         appendTerminalLines(
           "experience",
           [
-            "[ 2023 - Atual ]  Stefanini — Desenvolvedora Fullstack Jr",
+            "[ 2023 - Atual ]  Stefanini Brasil — Analista Desenvolvedor Junior",
+            "[ 2022 - 2023 ]   Stefanini Brasil — Estagiario de TI",
             "",
-            "Projetos:",
-            "  · Vitrine de Talentos",
-            "  · Admissao Digital",
+            "Projetos e frentes:",
+            "  · Admissao Digital: FastAPI, SQLAlchemy async e PostgreSQL",
+            "  · Estoque: Angular, NestJS e PostgreSQL",
+            "  · Vitrine de Talentos: Angular, NestJS, MySQL e integracoes",
+            "  · Biblioteca de dashboards reutilizavel com Atomic Design",
+            "  · Microservico de traducao: NestJS + RabbitMQ",
+            "  · Login corporativo integrado ao Azure",
             "",
             "Atuacao:",
-            "  · Backend com FastAPI e NestJS",
-            "  · APIs REST corporativas",
-            "  · PostgreSQL e MySQL",
-            "  · RabbitMQ e microsservicos",
-            "  · Traducao / i18n de sistemas",
-            "  · Login corporativo",
+            "  · APIs REST corporativas, regras de negocio e permissoes",
+            "  · Autenticacao, convites, cadastro de pessoas e onboarding",
+            "  · Gestao documental, beneficios e controle de acesso",
+            "  · Integracoes corporativas, documentacao tecnica e testes",
           ],
           { header: "[ EXPERIENCE ]", accent: "experience" },
         );

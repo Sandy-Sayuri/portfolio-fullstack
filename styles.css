@@ -76,6 +76,7 @@ a {
 #top,
 #about,
 #experience,
+#terminal,
 #missions,
 #skills,
 #contact {
@@ -224,19 +225,16 @@ a {
   align-content: start;
   gap: 14px;
   padding: 14px;
-  grid-template-columns: minmax(0, 1.62fr) minmax(320px, 0.98fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-areas:
-    "hero player"
-    "showcase showcase"
-    "skills skills";
+    "hero hero hero hero hero hero hero player player player player player"
+    "experience experience experience missions missions missions missions missions missions missions missions missions"
+    "terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal"
+    "skills skills skills skills skills skills skills skills skills skills skills skills";
 }
 
 .showcase-row {
-  grid-area: showcase;
-  display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.48fr);
-  gap: 14px;
-  align-items: start;
+  display: contents;
 }
 
 .window {
@@ -1261,6 +1259,7 @@ a {
 }
 
 .terminal-window {
+  grid-area: terminal;
   height: 520px;
   max-height: 520px;
   min-height: 520px;
@@ -1622,6 +1621,7 @@ a {
 }
 
 .missions-window {
+  grid-area: missions;
   height: 520px;
   max-height: 520px;
   min-height: 520px;
@@ -1641,7 +1641,7 @@ a {
 
 .mission-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 10px;
   padding: 12px;
   flex: 1;
@@ -1911,6 +1911,194 @@ a {
   padding-bottom: 18px;
 }
 
+.career-window {
+  grid-area: experience;
+  height: 520px;
+  max-height: 520px;
+  min-height: 520px;
+  overflow: hidden;
+  border-color: rgba(63, 240, 141, 0.22);
+  background:
+    radial-gradient(
+      circle at 8% 10%,
+      rgba(63, 240, 141, 0.08),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(99, 169, 255, 0.09),
+      transparent 20%
+    ),
+    linear-gradient(180deg, rgba(7, 12, 24, 0.96), rgba(4, 8, 18, 0.98));
+}
+
+.career-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  height: calc(100% - 43px);
+  padding: 14px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.career-layout::-webkit-scrollbar {
+  display: none;
+}
+
+.career-main-card,
+.career-item {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    180deg,
+    rgba(9, 15, 28, 0.94),
+    rgba(6, 10, 19, 0.92)
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.career-main-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-color: rgba(63, 240, 141, 0.25);
+}
+
+.career-heading {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.career-period {
+  color: var(--neon);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.career-heading h2 {
+  margin-top: 4px;
+  color: #f5f7ff;
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+.career-heading strong {
+  display: block;
+  margin-top: 4px;
+  color: #cfe0ff;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.career-main-card p,
+.career-item p:not(.status-label) {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.career-summary-list {
+  display: grid;
+  gap: 5px;
+  list-style: none;
+}
+
+.career-summary-list li {
+  position: relative;
+  padding-left: 16px;
+  color: #c8d4f0;
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
+.career-summary-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--neon);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.career-subrole {
+  display: grid;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(63, 240, 141, 0.12);
+}
+
+.career-subrole strong {
+  color: #eef3ff;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.career-subrole span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.career-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.career-item {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  min-height: 0;
+  padding: 13px 14px;
+}
+
+.career-dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 18px currentColor;
+}
+
+.career-item.accent-green {
+  color: var(--neon);
+}
+
+.career-item.accent-purple {
+  color: var(--purple);
+}
+
+.career-item.accent-purple .status-label {
+  color: #cf9dff;
+}
+
+.career-item.accent-blue {
+  color: var(--blue);
+}
+
+.career-item.accent-blue .status-label {
+  color: #8dc4ff;
+}
+
+.career-item.accent-yellow {
+  color: var(--yellow);
+}
+
+.career-item.accent-yellow .status-label {
+  color: #ffc767;
+}
+
 .mission-button::after {
   content: " ->";
 }
@@ -1997,6 +2185,11 @@ a {
   color: var(--neon);
 }
 
+.system-status-online {
+  color: var(--neon);
+  text-shadow: 0 0 12px rgba(63, 240, 141, 0.22);
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -2005,11 +2198,7 @@ a {
 
 @media (max-width: 1180px) {
   .workspace-grid {
-    grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.92fr);
-  }
-
-  .showcase-row {
-    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.22fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
   .hero-layout {
@@ -2096,12 +2285,10 @@ a {
     grid-template-areas:
       "hero"
       "player"
-      "showcase"
+      "experience"
+      "missions"
+      "terminal"
       "skills";
-  }
-
-  .showcase-row {
-    grid-template-columns: 1fr;
   }
 
   .terminal-body {
@@ -2114,6 +2301,14 @@ a {
 
   .mission-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .career-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .career-track {
+    grid-template-columns: 1fr;
   }
 
   .hero-layout {
@@ -2227,7 +2422,8 @@ a {
 
   .hero-layout,
   .mission-grid,
-  .stack-grid {
+  .stack-grid,
+  .career-layout {
     padding: 14px;
   }
 
